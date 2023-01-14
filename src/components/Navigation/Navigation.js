@@ -1,29 +1,17 @@
-import { Outlet } from 'react-router';
+import { StyledLink } from 'components/common/StyledLink';
+import { useAuth } from 'hooks';
+import { HomeStyledLink, Nav, PhoneIcon } from './Navigation.styled';
 
-import {
-  AuthNav,
-  Header,
-  HomeStyledLink,
-  PhoneIcon,
-  StyledLink,
-} from './Navigation.styled';
-import { NavigationWrap } from './Navigation.styled';
+export const Navigation = () => {
+  const { isLoggedIn } = useAuth();
 
-export const Navigation = () => (
-  <>
-    <Header>
-      <NavigationWrap>
-        <HomeStyledLink to="/" end>
-          <PhoneIcon />
-          Home
-        </HomeStyledLink>
-        <AuthNav>
-          <StyledLink to="/register">Register</StyledLink>
-          <StyledLink to="/login">Log in</StyledLink>
-        </AuthNav>
-      </NavigationWrap>
-    </Header>
-
-    <Outlet />
-  </>
-);
+  return (
+    <Nav>
+      <HomeStyledLink to="/">
+        <PhoneIcon />
+        Home
+      </HomeStyledLink>
+      {isLoggedIn && <StyledLink to="/contacts">Contacts</StyledLink>}
+    </Nav>
+  );
+};
