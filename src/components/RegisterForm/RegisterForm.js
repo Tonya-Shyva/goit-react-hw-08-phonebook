@@ -1,3 +1,4 @@
+import { BtnStyled } from 'components/common/BtnStyled';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import { Form, Label } from './RegisterForm.styled';
@@ -32,7 +33,7 @@ export const RegisterForm = () => {
         Password
         <input type="password" name="password" />
       </Label>
-      <button type="submit">Register</button>
+      <BtnStyled type="submit">Register</BtnStyled>
     </Form>
   );
 };

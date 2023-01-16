@@ -16,14 +16,16 @@ export default function Contacts() {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <AppContainer>
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <Title as="h2">Contacts</Title>
-      <Filter></Filter>
-      <div>{isLoading && 'Request in progress...'}</div>
-      <UserContacts></UserContacts>
-      <ToastContainer position="top-center" autoClose={3000} theme="dark" />
-    </AppContainer>
+    <main>
+      <AppContainer>
+        <Title>Phonebook</Title>
+        <ContactForm />
+        <Title as="h2">Contacts</Title>
+        <Filter></Filter>
+        <div>{isLoading && 'Request in progress...'}</div>
+        <UserContacts></UserContacts>
+        <ToastContainer position="top-center" autoClose={3000} theme="dark" />
+      </AppContainer>
+    </main>
   );
 }

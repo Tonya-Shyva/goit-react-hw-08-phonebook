@@ -14,10 +14,11 @@ export const Title = styled.h1`
 export const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
-
   width: 400px;
   padding: 15px;
-  border: 2px solid #000;
+  border: 2px solid #21aeeab5;
+  border-radius: 4px;
+  box-shadow: 0 0px 3px #21aeeab5;
 `;
 
 export const FormLabelStyled = styled.label`
@@ -34,18 +35,5 @@ export const FormInputStyled = styled.input`
     border: 2px solid #46add9a7;
     border-radius: 2px;
     outline: 2px solid #21aeeab5;
-  }
-`;
-
-export const BtnStyled = styled.button`
-  width: 100px;
-  border-radius: 4px;
-  transition: backround-color 250ms linear;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    background-color: #21aeeab5;
-    border-color: transparent;
   }
 `;

@@ -1,7 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import { Button, UserNavWrap, UserWelcomeNavText } from './UserMenu.styled';
+import {
+  IconButton,
+  UserName,
+  UserNavWrap,
+  UserNavWelcomeText,
+  IconSvg,
+} from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -9,10 +15,16 @@ export const UserMenu = () => {
 
   return (
     <UserNavWrap>
-      <UserWelcomeNavText>Welcome, {user.name}</UserWelcomeNavText>
-      <Button type="button" onClick={() => dispatch(logOut())}>
-        Logout
-      </Button>
+      <UserNavWelcomeText>
+        Welcome, <UserName>{user.name}</UserName>
+      </UserNavWelcomeText>
+      <IconButton
+        type="button"
+        aria-label="logout"
+        onClick={() => dispatch(logOut())}
+      >
+        <IconSvg />
+      </IconButton>
     </UserNavWrap>
   );
 };

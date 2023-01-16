@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GiExitDoor } from 'react-icons/gi';
 
 export const UserNavWrap = styled.div`
   display: flex;
@@ -6,20 +7,34 @@ export const UserNavWrap = styled.div`
   align-items: center;
 `;
 
-export const UserWelcomeNavText = styled.p`
+export const UserNavWelcomeText = styled.p`
   color: #000;
   margin-right: 15px;
 `;
 
-export const Button = styled.button`
-  min-width: 80px;
-  height: 40px;
-  border-radius: 4px;
-  transition: backround-color 250ms linear;
+export const UserName = styled.span`
+  color: #21aeea;
+`;
+
+export const IconButton = styled.button`
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  outline: none;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  &:hover,
-  &:focus {
+  outline: none;
+
+  &:hover {
+    opacity: 1;
     background-color: #21aeeab5;
-    border-color: transparent;
   }
+`;
+
+export const IconSvg = styled(GiExitDoor)`
+  width: 30px;
+  height: 35px;
 `;

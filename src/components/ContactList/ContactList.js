@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { BtnStyled } from 'components/ContactForm/ContactForm.styled';
+import { BtnStyled } from 'components/common/BtnStyled';
 import { getContacts, getFilter } from 'redux/contacts/selectors';
 import {
   ContactItem,

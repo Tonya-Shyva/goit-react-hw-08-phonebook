@@ -6,8 +6,8 @@ import {
   FormInputStyled,
   FormStyled,
   FormLabelStyled,
-  BtnStyled,
 } from './ContactForm.styled';
+import { BtnStyled } from 'components/common/BtnStyled';
 import { useState } from 'react';
 import { addContact } from 'redux/contacts/operations';
 
