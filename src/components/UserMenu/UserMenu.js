@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { ImUserCheck } from 'react-icons/im';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import {
@@ -15,6 +16,7 @@ export const UserMenu = () => {
 
   return (
     <UserNavWrap>
+      <ImUserCheck fill="#000" />
       <UserNavWelcomeText>
         Welcome, <UserName>{user.name}</UserName>
       </UserNavWelcomeText>

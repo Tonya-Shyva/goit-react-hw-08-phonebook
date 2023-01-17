@@ -8,8 +8,9 @@ export const UserNavWrap = styled.div`
 `;
 
 export const UserNavWelcomeText = styled.p`
+  text-align: center;
   color: #000;
-  margin-right: 15px;
+  margin: 0px 15px 0px 3px;
 `;
 
 export const UserName = styled.span`
