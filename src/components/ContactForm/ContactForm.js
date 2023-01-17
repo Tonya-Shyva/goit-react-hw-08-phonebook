@@ -43,7 +43,7 @@ export function ContactForm() {
 
     const contactName = name.value;
     const contactNumber = number.value;
-    const contactsLists = [...contacts];
+    const contactsLists = [...contacts.items];
 
     if (
       contactsLists.find(

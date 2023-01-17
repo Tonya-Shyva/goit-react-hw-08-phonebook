@@ -12,14 +12,14 @@ import {
 import { deleteContact } from 'redux/contacts/operations';
 
 export const UserContacts = () => {
-  const contacts = useSelector(getContacts);
+  const { items, isLoading, error } = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
   const handleDelete = contactId => dispatch(deleteContact(contactId));
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLowerCase();
-    const filterContactsList = contacts.filter(contact => {
+    const filterContactsList = items.filter(contact => {
       return contact.name.toLowerCase().includes(normalizedFilter);
     });
 
@@ -36,6 +36,8 @@ export const UserContacts = () => {
         <p>No contacts</p>
       ) : (
         <ContactListStyled>
+          <div>{isLoading && 'Request in progress...'}</div>
+          {error && <b>{error}</b>}
           {getFilteredContacts().map((contact, id) => (
             <ContactItem key={id}>
               {contact.name}: {contact.number}
