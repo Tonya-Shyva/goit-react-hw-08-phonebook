@@ -24,7 +24,6 @@ export const Layout = () => {
           </ToastBar>
         )}
       </Toaster>
-      ;
     </div>
   );
 };

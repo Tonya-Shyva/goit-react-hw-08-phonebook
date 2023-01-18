@@ -1,11 +1,24 @@
-import { BtnStyled } from 'components/common/BtnStyled';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { Form, Label } from './RegisterForm.styled';
+import { BtnStyled } from 'components/common/BtnStyled';
+import { Form, IconPassword, InputReg, Label } from './RegisterForm.styled';
+import { useState } from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const [toggleIcon, setToggleIcon] = useState('☠️');
+  const [type, setType] = useState('password');
+
+  const togglePassInput = e => {
+    if (type === 'password') {
+      setType('text');
+      setToggleIcon('💀');
+    } else {
+      setType('password');
+      setToggleIcon('☠️');
+    }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -13,8 +26,19 @@ export const RegisterForm = () => {
     const name = form.elements.name.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-    if (email === '' || password === '' || name === '') {
+    const confirmPassword = form.elements.confirmPassword.value;
+    if (
+      email === '' ||
+      password === '' ||
+      name === '' ||
+      confirmPassword === ''
+    ) {
       toast('Please, fill in all fields');
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast('Wrong confirmation of password');
+      form.elements.confirmPassword.value = '';
       return;
     }
     dispatch(
@@ -39,7 +63,12 @@ export const RegisterForm = () => {
       </Label>
       <Label>
         Password
-        <input type="password" name="password" />
+        <InputReg type={type} name="password" />
+        <IconPassword onClick={togglePassInput}>{toggleIcon}</IconPassword>
+      </Label>
+      <Label>
+        Confirm password
+        <input type="password" name="confirmPassword" required />
       </Label>
       <BtnStyled type="submit">Register</BtnStyled>
     </Form>
