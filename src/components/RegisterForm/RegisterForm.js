@@ -69,7 +69,7 @@ export const RegisterForm = () => {
       </Label>
       <Label>
         Confirm password
-        <input type="password" name="confirmPassword" required />
+        <input type="password" name="confirmPassword" />
       </Label>
       <BtnStyled type="submit">Register</BtnStyled>
     </Form>
