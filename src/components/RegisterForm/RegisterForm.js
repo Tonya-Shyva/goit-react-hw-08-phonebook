@@ -1,5 +1,6 @@
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { register } from 'redux/auth/operations';
 import { BtnStyled } from 'components/common/BtnStyled';
 import { Form, IconPassword, InputReg, Label } from './RegisterForm.styled';
@@ -7,16 +8,16 @@ import { useState } from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [toggleIcon, setToggleIcon] = useState('☠️');
+  const [toggleIcon, setToggleIcon] = useState(<AiOutlineEyeInvisible />);
   const [type, setType] = useState('password');
 
   const togglePassInput = e => {
     if (type === 'password') {
       setType('text');
-      setToggleIcon('💀');
+      setToggleIcon(<AiOutlineEye />);
     } else {
       setType('password');
-      setToggleIcon('☠️');
+      setToggleIcon(<AiOutlineEyeInvisible />);
     }
   };
 
