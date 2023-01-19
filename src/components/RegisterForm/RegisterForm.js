@@ -1,10 +1,10 @@
 import { toast } from 'react-hot-toast';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { register } from 'redux/auth/operations';
 import { BtnStyled } from 'components/common/BtnStyled';
 import { Form, IconPassword, InputReg, Label } from './RegisterForm.styled';
-import { useState } from 'react';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -35,6 +35,10 @@ export const RegisterForm = () => {
       confirmPassword === ''
     ) {
       toast('Please, fill in all fields');
+      return;
+    }
+    if (password.length < 7) {
+      toast('Password must be at least 7 symbols long');
       return;
     }
     if (password !== confirmPassword) {
