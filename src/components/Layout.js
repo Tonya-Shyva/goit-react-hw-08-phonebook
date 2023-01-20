@@ -7,7 +7,7 @@ import { Loader } from './Loader/Loader';
 
 export const Layout = () => {
   return (
-    <div style={{ margin: '0 auto', padding: '0 16px' }}>
+    <div>
       <AppBar />
       <Suspense fallback={<Loader />}>
         <Outlet />

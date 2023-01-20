@@ -1,4 +1,4 @@
-import { Box } from 'components/Box/Box';
+import { Box } from 'components/common/Box';
 
 export default function Home() {
   return (

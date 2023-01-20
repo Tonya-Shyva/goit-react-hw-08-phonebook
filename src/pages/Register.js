@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
-import { Box } from 'components/Box/Box';
+import { Box } from 'components/common/Box';
 
 export default function Register() {
   return (

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { LoginForm } from 'components/LoginForm/LoginForm';
-import { Box } from 'components/Box/Box';
+import { Box } from 'components/common/Box';
 
 export default function Login() {
   return (

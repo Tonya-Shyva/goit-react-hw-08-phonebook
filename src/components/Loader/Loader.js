@@ -1,5 +1,5 @@
 import { ProgressBar } from 'react-loader-spinner';
-import { Box } from 'components/Box/Box';
+import { Box } from 'components/common/Box';
 
 export const Loader = () => (
   <Box>
