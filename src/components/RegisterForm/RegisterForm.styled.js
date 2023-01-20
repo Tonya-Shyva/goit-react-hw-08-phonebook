@@ -11,11 +11,6 @@ export const Label = styled.label`
   margin-bottom: 16px;
 `;
 
-export const InputReg = styled.input`
-  display: flex;
-  align-items: center;
-`;
-
 export const IconPassword = styled.span`
   position: absolute;
   top: 20px;
