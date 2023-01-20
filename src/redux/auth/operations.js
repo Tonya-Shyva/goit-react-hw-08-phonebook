@@ -35,7 +35,7 @@ export const logIn = createAsyncThunk(
       return res.data;
     } catch (error) {
       if (error.request.status === 400) {
-        toast('Incorrect password or username');
+        toast('Incorrect password or email');
       }
       return thunkAPI.rejectWithValue(toast(error.message));
     }
