@@ -21,9 +21,6 @@ export const LoginForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const email = form.elements.email.value;
-    const password = form.elements.password.value;
     if (email === '' || password === '') {
       toast('Please, fill in all fields');
       return;
@@ -34,7 +31,6 @@ export const LoginForm = () => {
         password,
       })
     );
-    form.reset();
   };
 
   return (

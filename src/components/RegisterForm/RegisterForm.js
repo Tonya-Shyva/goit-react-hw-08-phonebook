@@ -16,23 +16,23 @@ export const RegisterForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleChange = e => {
-    const { name } = e.target;
+    const { name, value } = e.target;
     if (name === 'name') {
-      return setName(e.target.value);
+      return setName(value);
     }
     if (name === 'email') {
-      return setEmail(e.target.value);
+      return setEmail(value);
     }
     if (name === 'password') {
-      return setPassword(e.target.value);
+      return setPassword(value);
     }
     if (name === 'confirmPassword') {
-      return setConfirmPassword(e.target.value);
+      return setConfirmPassword(value);
     }
     return;
   };
 
-  const togglePassInput = e => {
+  const togglePassInput = () => {
     if (type === 'password') {
       setType('text');
       setToggleIcon(<AiOutlineEye />);
@@ -44,11 +44,6 @@ export const RegisterForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const name = form.elements.name.value;
-    const email = form.elements.email.value;
-    const password = form.elements.password.value;
-    const confirmPassword = form.elements.confirmPassword.value;
     if (
       email === '' ||
       password === '' ||
@@ -64,7 +59,7 @@ export const RegisterForm = () => {
     }
     if (password !== confirmPassword) {
       toast('Wrong confirmation of password');
-      form.elements.confirmPassword.value = '';
+      setConfirmPassword('');
       return;
     }
     dispatch(
@@ -74,7 +69,6 @@ export const RegisterForm = () => {
         password,
       })
     );
-    form.reset();
   };
 
   return (

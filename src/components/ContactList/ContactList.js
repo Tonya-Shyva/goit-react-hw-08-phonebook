@@ -10,6 +10,7 @@ import {
   ContactsWrap,
 } from './ContactList.styled';
 import { deleteContact } from 'redux/contacts/operations';
+import { ThreeDots } from 'react-loader-spinner';
 
 export const UserContacts = () => {
   const { items, isLoading, error } = useSelector(getContacts);
@@ -36,7 +37,7 @@ export const UserContacts = () => {
         <p>No contacts</p>
       ) : (
         <ContactListStyled>
-          <div>{isLoading && 'Request in progress...'}</div>
+          <div>{isLoading && <ThreeDots color="#51E5FF" />}</div>
           {error && <b>{error}</b>}
           {getFilteredContacts().map((contact, id) => (
             <ContactItem key={id}>
