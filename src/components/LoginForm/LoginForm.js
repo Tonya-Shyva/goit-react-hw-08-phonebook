@@ -1,59 +1,124 @@
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
+import { ErrorMessage, Field, Formik } from 'formik';
+import * as Yup from 'yup';
 import { logIn } from 'redux/auth/operations';
-import { LoginFormStyled, LoginLabel } from './LoginForm.styled';
+import {
+  ErrorMessageStyled,
+  LoginFormStyled,
+  LoginLabel,
+} from './LoginForm.styled';
+
+const initValues = {
+  email: '',
+  password: '',
+};
+
+const shema = Yup.object().shape({
+  email: Yup.string().email().required(),
+  password: Yup.string().min(7).required(),
+});
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleChangeEmail = e => {
-    const { value } = e.target;
-    setEmail(value);
-  };
-
-  const handleChangePassword = e => {
-    const { value } = e.target;
-    setPassword(value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (email === '' || password === '') {
-      toast('Please, fill in all fields');
-      return;
-    }
+  const handleSubmit = ({ email, password }, { resetForm }) => {
+    // if (email === '' || password === '') {
+    //   return;
+    // }
     dispatch(
       logIn({
         email,
         password,
       })
     );
+    resetForm();
   };
 
   return (
-    <LoginFormStyled onSubmit={handleSubmit} autoComplete="off">
-      <LoginLabel>
-        Email
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChangeEmail}
-        />
-      </LoginLabel>
-      <LoginLabel>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChangePassword}
-        />
-      </LoginLabel>
-      <button type="submit">Log In</button>
-    </LoginFormStyled>
+    <Formik
+      initialValues={initValues}
+      validationSchema={shema}
+      onSubmit={handleSubmit}
+    >
+      <LoginFormStyled autoComplete="off">
+        <LoginLabel>
+          Email
+          <Field
+            type="email"
+            name="email"
+            // value={email}
+            // onChange={handleChangeEmail}
+          />
+          <ErrorMessage name="email">
+            {msg => <ErrorMessageStyled>{msg}</ErrorMessageStyled>}
+          </ErrorMessage>
+        </LoginLabel>
+        <LoginLabel>
+          Password
+          <Field
+            type="password"
+            name="password"
+            // value={password}
+            // onChange={handleChangePassword}
+          />
+          <ErrorMessage name="password">
+            {msg => <ErrorMessageStyled>{msg}</ErrorMessageStyled>}
+          </ErrorMessage>
+        </LoginLabel>
+        <button type="submit">Log In</button>
+      </LoginFormStyled>
+    </Formik>
   );
+
+  // with styled-components
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+  // const handleChangeEmail = e => {
+  //   const { value } = e.target;
+  //   setEmail(value);
+  // };
+
+  // const handleChangePassword = e => {
+  //   const { value } = e.target;
+  //   setPassword(value);
+  // };
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   if (email === '' || password === '') {
+  //     toast('Please, fill in all fields');
+  //     return;
+  //   }
+  //   dispatch(
+  //     logIn({
+  //       email,
+  //       password,
+  //     })
+  //   );
+  // };
+
+  // return (
+  // <LoginForm onSubmit={handleSubmit} autoComplete="off">
+  //   <LoginLabel>
+  //     Email
+  //     <input
+  //       type="email"
+  //       name="email"
+  //       value={email}
+  //       onChange={handleChangeEmail}
+  //     />
+  //   </LoginLabel>
+  //   <LoginLabel>
+  //     Password
+  //     <input
+  //       type="password"
+  //       name="password"
+  //       value={password}
+  //       onChange={handleChangePassword}
+  //     />
+  //   </LoginLabel>
+  //   <button type="submit">Log In</button>
+  // </LoginForm>
+  // );
 };
