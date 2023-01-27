@@ -22,9 +22,6 @@ export const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
-    // if (email === '' || password === '') {
-    //   return;
-    // }
     dispatch(
       logIn({
         email,
@@ -43,24 +40,14 @@ export const LoginForm = () => {
       <LoginFormStyled autoComplete="off">
         <LoginLabel>
           Email
-          <Field
-            type="email"
-            name="email"
-            // value={email}
-            // onChange={handleChangeEmail}
-          />
+          <Field type="email" name="email" />
           <ErrorMessage name="email">
             {msg => <ErrorMessageStyled>{msg}</ErrorMessageStyled>}
           </ErrorMessage>
         </LoginLabel>
         <LoginLabel>
           Password
-          <Field
-            type="password"
-            name="password"
-            // value={password}
-            // onChange={handleChangePassword}
-          />
+          <Field type="password" name="password" />
           <ErrorMessage name="password">
             {msg => <ErrorMessageStyled>{msg}</ErrorMessageStyled>}
           </ErrorMessage>
@@ -69,56 +56,4 @@ export const LoginForm = () => {
       </LoginFormStyled>
     </Formik>
   );
-
-  // with styled-components
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
-  // const handleChangeEmail = e => {
-  //   const { value } = e.target;
-  //   setEmail(value);
-  // };
-
-  // const handleChangePassword = e => {
-  //   const { value } = e.target;
-  //   setPassword(value);
-  // };
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   if (email === '' || password === '') {
-  //     toast('Please, fill in all fields');
-  //     return;
-  //   }
-  //   dispatch(
-  //     logIn({
-  //       email,
-  //       password,
-  //     })
-  //   );
-  // };
-
-  // return (
-  // <LoginForm onSubmit={handleSubmit} autoComplete="off">
-  //   <LoginLabel>
-  //     Email
-  //     <input
-  //       type="email"
-  //       name="email"
-  //       value={email}
-  //       onChange={handleChangeEmail}
-  //     />
-  //   </LoginLabel>
-  //   <LoginLabel>
-  //     Password
-  //     <input
-  //       type="password"
-  //       name="password"
-  //       value={password}
-  //       onChange={handleChangePassword}
-  //     />
-  //   </LoginLabel>
-  //   <button type="submit">Log In</button>
-  // </LoginForm>
-  // );
 };
